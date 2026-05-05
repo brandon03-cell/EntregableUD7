@@ -51,6 +51,18 @@ public class Main {
 
         System.out.println("\nSiguiente método\n");
 
+        List<Libro> obtenerLibrosAutorTexto = dao.obtenerLibrosAutorTexto("Stephen");
+        for (Libro libro : obtenerLibrosAutorTexto) {
+            System.out.println(libro);
+        }
+
+        System.out.println("\nSiguiente método\n");
+
+        List<Libro> obtenerLibrosPrecioMasAlto  = dao.obtenerLibrosPrecioMasAlto();
+        for (Libro libro : obtenerLibrosPrecioMasAlto) {
+            System.out.println(libro);
+        }
+
         /*
         Scanner sc = new Scanner(System.in);
         System.out.println("Elige un género literario: ");
