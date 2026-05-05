@@ -57,10 +57,17 @@ public class LibroDAO {
         return resultado;
     }
 
-    //Obtener los libros con menos de 3 ejemplares disponibles
     public List<Libro> obtenerLibrosMenosDe3EjemplaresDisponibles() {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Libro> query = em.createQuery("select l from Libro l where l.ejemplaresDisponibles < 3", Libro.class);
+        List<Libro> res = query.getResultList();
+        em.close();
+        return res;
+    }
+
+    public List<Libro> obtenerPublicadosApartir2000() {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Libro> query = em.createQuery("select l from Libro l where l.anyoPublicacion >= 2000", Libro.class);
         List<Libro> res = query.getResultList();
         em.close();
         return res;
