@@ -65,9 +65,19 @@ public class LibroDAO {
         return res;
     }
 
-    public List<Libro> obtenerPublicadosApartir2000() {
+    public List<Libro> obtenerPublicados2000() {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Libro> query = em.createQuery("select l from Libro l where l.anyoPublicacion >= 2000", Libro.class);
+        List<Libro> res = query.getResultList();
+        em.close();
+        return res;
+    }
+
+    //Obtener los libros cuyo autor contenga un texto dado por parámetro
+    public List<Libro> obtenerLibrosAutorTexto(String texto) {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Libro> query = em.createQuery("select l from Libro l where l.autor like :texto", Libro.class);
+        query.setParameter("texto", "%" + texto + "%");
         List<Libro> res = query.getResultList();
         em.close();
         return res;
