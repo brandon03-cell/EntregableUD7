@@ -73,7 +73,6 @@ public class LibroDAO {
         return res;
     }
 
-    //Obtener los libros cuyo autor contenga un texto dado por parámetro
     public List<Libro> obtenerLibrosAutorTexto(String texto) {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Libro> query = em.createQuery("select l from Libro l where l.autor like :texto", Libro.class);
@@ -82,4 +81,15 @@ public class LibroDAO {
         em.close();
         return res;
     }
+
+    //Obtener los 5 libros con el precio más alto
+    public List<Libro> obtenerLibrosPrecioMasAlto() {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Libro> query = em.createQuery("select l from Libro l order by l.precio desc limit 5", Libro.class);
+        List<Libro> res = query.getResultList();
+        em.close();
+        return res;
+    }
+
+    //
 }
