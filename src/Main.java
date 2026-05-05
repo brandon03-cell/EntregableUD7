@@ -67,7 +67,9 @@ public class Main {
 
         System.out.println("Número de libros diferentes: " + dao.obtenerNumeroLibrosDiferentes());
 
+        System.out.println("\nSiguiente métodoooooooooooooooo\n");
 
+        System.out.println("La media es: " + dao.obtenerMediaPrecio());
 
         /*
         Scanner sc = new Scanner(System.in);
