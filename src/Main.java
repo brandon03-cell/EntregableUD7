@@ -41,6 +41,16 @@ public class Main {
         for (Libro libro : librosMenosDe3EjemplaresDisponibles) {
             System.out.println(libro);
         }
+
+        System.out.println("\nSiguiente método\n");
+
+        List<Libro> obtenerPublicados2000 = dao.obtenerPublicados2000();
+        for (Libro libro : obtenerPublicados2000) {
+            System.out.println(libro);
+        }
+
+        System.out.println("\nSiguiente método\n");
+
         /*
         Scanner sc = new Scanner(System.in);
         System.out.println("Elige un género literario: ");
