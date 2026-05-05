@@ -4,6 +4,7 @@ import jakarta.persistence.Persistence;
 import modelo.Libro;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -29,7 +30,18 @@ public class Main {
 
         System.out.println("\nSiguiente método de obtener libros según un género dado como parámetro xd\n");
 
-        List<Libro> librosPorGenero = dao.obtenerLibros("Novela");
+        List<Libro> librosGenero = dao.obtenerLibros("Novela");
+        for (Libro libro : librosGenero) {
+            System.out.println(libro);
+        }
+
+
+        /*
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Elige un género literario: ");
+        String generoElegido = sc.nextLine();
+
+        List<Libro> librosPorGenero = dao.obtenerLibros(generoElegido);
         if (librosPorGenero.isEmpty()) {
             System.out.println("Libros no encontrados");
         } else {
@@ -37,6 +49,9 @@ public class Main {
                 System.out.println(libro);
             }
         }
+        sc.close();
         emf.close();
+
+         */
     }
 }
