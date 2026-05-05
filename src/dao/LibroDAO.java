@@ -5,7 +5,9 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.TypedQuery;
 import modelo.Libro;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class LibroDAO {
     private EntityManagerFactory emf;
@@ -117,5 +119,17 @@ public class LibroDAO {
     }
 
     //Obtener el número de libros diferentes agrupados por género
-
+    public Map<String, Long> obtenerNumeroLibrosPorGenero() {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Object[]> query = em.createQuery("select l.genero, count(l) from Libro l group by l.genero", Object[].class);
+        List<Object[]> resultado = query.getResultList();
+        Map<String, Long> mapResultados = new HashMap<>();
+        for (Object[] fila : resultado) {
+            String genero = (String) fila[0];
+            Long numero = (Long) fila[1];
+            mapResultados.put(genero, numero);
+        }
+        em.close();
+        return mapResultados;
+    }
 }

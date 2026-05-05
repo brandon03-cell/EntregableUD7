@@ -4,6 +4,7 @@ import jakarta.persistence.Persistence;
 import modelo.Libro;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -76,6 +77,13 @@ public class Main {
         Libro masViejo = dao.obtenerLibroMasViejo();
         System.out.println("El más antiguo es " + masViejo.getTitulo() + " siendo publicado en " + masViejo.getAnyoPublicacion());
 
+        System.out.println("\nSiguiente métodoooooooooooooooo\n");
+
+        Map<String, Long> librosPorGenero = dao.obtenerNumeroLibrosPorGenero();
+
+        librosPorGenero.forEach((genero, cantidad) -> {
+            System.out.println("Género: " + genero + ", cantidad: " + cantidad);
+        });
         /*
         Scanner sc = new Scanner(System.in);
         System.out.println("Elige un género literario: ");
