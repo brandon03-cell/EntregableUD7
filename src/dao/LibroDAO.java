@@ -118,7 +118,6 @@ public class LibroDAO {
         return resultado;
     }
 
-    //Obtener el número de libros diferentes agrupados por género
     public Map<String, Long> obtenerNumeroLibrosPorGenero() {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Object[]> query = em.createQuery("select l.genero, count(l) from Libro l group by l.genero", Object[].class);
@@ -131,5 +130,28 @@ public class LibroDAO {
         }
         em.close();
         return mapResultados;
+    }
+
+    public Map<String, Double> obtenerPrecioMedioPorGenero() {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Object[]> query = em.createQuery("select l.genero, avg(l.precio) from Libro l group by l.genero", Object[].class);
+        List<Object[]> resultados = query.getResultList();
+        Map<String, Double> mapaMedias = new java.util.HashMap<>();
+        for (Object[] fila : resultados) {
+            String gen = (String) fila[0];
+            Double med = (Double) fila[1];
+            mapaMedias.put(gen, med);
+        }
+        em.close();
+        return mapaMedias;
+    }
+
+    public List<String> obtenerGenerosMuchoStock() {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<String> query = em.createQuery(
+                "select l.genero from Libro l group by l.genero having sum(l.ejemplaresDisponibles) > 100", String.class);
+        List<String> lista = query.getResultList();
+        em.close();
+        return lista;
     }
 }
