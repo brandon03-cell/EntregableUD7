@@ -119,16 +119,7 @@ public class Libro {
 
     @Override
     public String toString() {
-        return "Libro{" +
-                "id=" + id +
-                ", titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
-                ", isbn='" + isbn + '\'' +
-                ", anyoPublicacion=" + anyoPublicacion +
-                ", genero='" + genero + '\'' +
-                ", precio=" + precio +
-                ", ejemplaresDisponibles=" + ejemplaresDisponibles +
-                ", esBestSeller=" + esBestSeller +
-                '}';
+        return "Titulo: " + this.getTitulo() + ", Autor: " + this.getAutor() + ", isbn: " + this.getIsbn() + ", publicado en: " + this.getAnyoPublicacion()
+                + ", del género: " + this.getGenero() + ", con un precio de: " + this.getPrecio() + ", teniendo " + this.getEjemplaresDisponibles() +" ejemplares disponibles: "  + ", esBestSeller: " + this.isEsBestSeller();
     }
 }
