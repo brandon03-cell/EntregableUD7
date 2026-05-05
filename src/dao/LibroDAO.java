@@ -2,7 +2,10 @@ package dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.TypedQuery;
 import modelo.Libro;
+
+import java.util.List;
 
 public class LibroDAO {
     private EntityManagerFactory emf;
@@ -36,6 +39,12 @@ public class LibroDAO {
         em.close();
         return lb;
     }
-
-
+    //Obtener todos los libros
+    public List<Libro> obtenerLibros() {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Libro> query = em.createQuery("select l from Libro l", Libro.class);
+        List<Libro> resultado = query.getResultList();
+        em.close();
+        return resultado;
+    }
 }
