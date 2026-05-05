@@ -39,10 +39,20 @@ public class LibroDAO {
         em.close();
         return lb;
     }
-    //Obtener todos los libros
+
     public List<Libro> obtenerLibros() {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Libro> query = em.createQuery("select l from Libro l", Libro.class);
+        List<Libro> resultado = query.getResultList();
+        em.close();
+        return resultado;
+    }
+
+    //Obtener los libros de un género dado por parámetro
+    public List<Libro> obtenerLibros(String genero) {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Libro> query = em.createQuery("select l from Libro l where l.genero = :genero", Libro.class);
+        query.setParameter("genero", genero);
         List<Libro> resultado = query.getResultList();
         em.close();
         return resultado;
