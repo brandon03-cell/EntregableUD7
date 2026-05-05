@@ -99,7 +99,6 @@ public class LibroDAO {
         return resultado.intValue();
     }
 
-    //Obtener el precio medio de los libros de la biblioteca
     public double obtenerMediaPrecio() {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Double> query = em.createQuery("select avg(l.precio) from Libro l", Double.class);
@@ -107,4 +106,16 @@ public class LibroDAO {
         em.close();
         return media;
     }
+
+    public Libro obtenerLibroMasViejo() {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Libro> query = em.createQuery("select l from Libro l order by l.anyoPublicacion asc", Libro.class);
+        query.setMaxResults(1);
+        Libro resultado = query.getSingleResult();
+        em.close();
+        return resultado;
+    }
+
+    //Obtener el número de libros diferentes agrupados por género
+
 }

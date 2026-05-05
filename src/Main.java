@@ -71,6 +71,11 @@ public class Main {
 
         System.out.println("La media es: " + dao.obtenerMediaPrecio());
 
+        System.out.println("\nSiguiente métodoooooooooooooooo\n");
+
+        Libro masViejo = dao.obtenerLibroMasViejo();
+        System.out.println("El más antiguo es " + masViejo.getTitulo() + " siendo publicado en " + masViejo.getAnyoPublicacion());
+
         /*
         Scanner sc = new Scanner(System.in);
         System.out.println("Elige un género literario: ");
