@@ -48,7 +48,6 @@ public class LibroDAO {
         return resultado;
     }
 
-    //Obtener los libros de un género dado por parámetro
     public List<Libro> obtenerLibros(String genero) {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Libro> query = em.createQuery("select l from Libro l where l.genero = :genero", Libro.class);
@@ -56,5 +55,14 @@ public class LibroDAO {
         List<Libro> resultado = query.getResultList();
         em.close();
         return resultado;
+    }
+
+    //Obtener los libros con menos de 3 ejemplares disponibles
+    public List<Libro> obtenerLibrosMenosDe3EjemplaresDisponibles() {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Libro> query = em.createQuery("select l from Libro l where l.ejemplaresDisponibles < 3", Libro.class);
+        List<Libro> res = query.getResultList();
+        em.close();
+        return res;
     }
 }
