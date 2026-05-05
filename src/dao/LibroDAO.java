@@ -85,11 +85,19 @@ public class LibroDAO {
     //Obtener los 5 libros con el precio más alto
     public List<Libro> obtenerLibrosPrecioMasAlto() {
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Libro> query = em.createQuery("select l from Libro l order by l.precio desc limit 5", Libro.class);
+        TypedQuery<Libro> query = em.createQuery("select l from Libro l order by l.precio desc", Libro.class);
+        query.setMaxResults(5);
         List<Libro> res = query.getResultList();
         em.close();
         return res;
     }
 
-    //
+    //Obtener el número de libros diferentes de la biblioteca
+    public int obtenerNumeroLibrosDiferentes() {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Long> query = em.createQuery("select count(distinct l.isbn) from Libro l",  Long.class);
+        Long resultado = query.getSingleResult();
+        em.close();
+        return resultado.intValue();
+    }
 }

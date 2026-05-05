@@ -32,36 +32,42 @@ public class Main {
 
         List<Libro> librosGenero = dao.obtenerLibros("Novela");
         for (Libro libro : librosGenero) {
-            System.out.println(libro);
+            System.out.println(libro.getTitulo() + " - " + libro.getGenero());
         }
 
         System.out.println("\nSiguiente método\n");
 
         List<Libro> librosMenosDe3EjemplaresDisponibles = dao.obtenerLibrosMenosDe3EjemplaresDisponibles();
         for (Libro libro : librosMenosDe3EjemplaresDisponibles) {
-            System.out.println(libro);
+            System.out.println(libro.getTitulo() + " - " + libro.getEjemplaresDisponibles());
         }
 
         System.out.println("\nSiguiente método\n");
 
         List<Libro> obtenerPublicados2000 = dao.obtenerPublicados2000();
         for (Libro libro : obtenerPublicados2000) {
-            System.out.println(libro);
+            System.out.println(libro.getTitulo() + " - " + libro.getAnyoPublicacion());
         }
 
         System.out.println("\nSiguiente método\n");
 
         List<Libro> obtenerLibrosAutorTexto = dao.obtenerLibrosAutorTexto("Stephen");
         for (Libro libro : obtenerLibrosAutorTexto) {
-            System.out.println(libro);
+            System.out.println(libro.getAutor());
         }
 
         System.out.println("\nSiguiente método\n");
 
         List<Libro> obtenerLibrosPrecioMasAlto  = dao.obtenerLibrosPrecioMasAlto();
         for (Libro libro : obtenerLibrosPrecioMasAlto) {
-            System.out.println(libro);
+            System.out.println("El libro " + libro.getTitulo() + " tiene un precio de " + libro.getPrecio() + "€");
         }
+
+        System.out.println("\nSiguiente métodoooooooooooooooo\n");
+
+        System.out.println("Número de libros diferentes: " + dao.obtenerNumeroLibrosDiferentes());
+
+
 
         /*
         Scanner sc = new Scanner(System.in);
