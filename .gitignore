@@ -28,3 +28,16 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+# Compilados (No queremos subir el código ya "masticado" por el PC)
+out/
+*.class
+
+# IntelliJ (Configuraciones locales que cambian entre Fedora y Windows)
+.idea/
+*.iml
+
+# Bases de datos (Los datos de tu práctica. Solo queremos el código, no los registros)
+*.odb
+*.odt
+*.log
